@@ -89,7 +89,7 @@ public enum CocoaMQTTQOS: UInt8 {
 /**
  * Connection State
  */
-enum CocoaMQTTConnState: UInt8 {
+public enum CocoaMQTTConnState: UInt8 {
 
     case INIT = 0
 
@@ -170,7 +170,7 @@ public class CocoaMQTT: NSObject, CocoaMQTTClient, GCDAsyncSocketDelegate, Cocoa
 
     //socket and connection
 
-    var connState = CocoaMQTTConnState.INIT
+    public var connState = CocoaMQTTConnState.INIT
 
     var socket: GCDAsyncSocket?
 
@@ -220,7 +220,7 @@ public class CocoaMQTT: NSObject, CocoaMQTTClient, GCDAsyncSocketDelegate, Cocoa
         let msgId: UInt16 = _nextMessageId()
         let frame = CocoaMQTTFramePublish(msgid: msgId, topic: message.topic, payload: message.payload)
         frame.qos = message.qos.rawValue
-        frame.retain = message.retain
+        frame.retain = message.shouldRetain
         frame.dup = message.dup
         send(frame, tag: Int(msgId))
         if message.qos != CocoaMQTTQOS.QOS0 {
