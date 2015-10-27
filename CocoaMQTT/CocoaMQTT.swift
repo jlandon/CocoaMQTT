@@ -220,7 +220,7 @@ public class CocoaMQTT: NSObject, CocoaMQTTClient, GCDAsyncSocketDelegate, Cocoa
         let msgId: UInt16 = _nextMessageId()
         let frame = CocoaMQTTFramePublish(msgid: msgId, topic: message.topic, payload: message.payload)
         frame.qos = message.qos.rawValue
-        frame.retain = message.shouldRetain
+        frame.retain = message.retain
         frame.dup = message.dup
         send(frame, tag: Int(msgId))
         if message.qos != CocoaMQTTQOS.QOS0 {

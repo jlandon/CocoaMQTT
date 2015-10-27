@@ -259,7 +259,7 @@ class CocoaMQTTFrameConnect: CocoaMQTTFrame {
         if let will = client.willMessage {
             flagWill = true
             flagWillQOS = will.qos.rawValue
-            flagWillRetain = will.shouldRetain
+            flagWillRetain = will.retain
             payload += will.topic.bytesWithLength
             payload += will.payload
         }
