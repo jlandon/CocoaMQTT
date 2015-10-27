@@ -24,19 +24,19 @@ public class CocoaMQTTMessage {
         }
     }
 
-    var qos: CocoaMQTTQOS = .QOS1
+    public var qos: CocoaMQTTQOS = .QOS1
 
-    var retain: Bool = false
+    public var retain: Bool = false
 
-    var dup: Bool = false
+    public var dup: Bool = false
 
-    init(topic: String, string: String, qos: CocoaMQTTQOS = .QOS1) {
+    public init(topic: String, string: String, qos: CocoaMQTTQOS = .QOS1) {
         self.topic = topic
         self.payload = [UInt8](string.utf8)
         self.qos = qos
     }
 
-    init(topic: String, payload: [UInt8], qos: CocoaMQTTQOS = .QOS1, retain: Bool = false, dup: Bool = false) {
+    public init(topic: String, payload: [UInt8], qos: CocoaMQTTQOS = .QOS1, retain: Bool = false, dup: Bool = false) {
         self.topic = topic
         self.payload = payload
         self.qos = qos
